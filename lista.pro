@@ -68,6 +68,21 @@ inverter_profundo([H|T], Acc, Linv) :-
     \+ is_list(H),
     inverter_profundo(T, [H|Acc], Linv). % Move o átomo diretamente para o Acumulador
 
+%------------------------------------------------------------------------------
+%Questão 8  - Gerar pares entre um elemento e os elementos de uma lista
+paridade(_,[],[]).
+paridade(X,[H|R],[[X,H]|L]):-
+    paridade(X,R,L).
+%------------------------------------------------------------------------------
+
+%Questão 9   - Gerar todos os pares possíveis entre os elementos de uma lista
+% incluir func paridade/3
+pares([], []).
+pares([X|T], LL) :-
+    paridade(X, T, L1),
+    pares(T, L2),
+    append(L1, L2, LL).
+
 
 
 
